@@ -8,24 +8,49 @@ However, something that we would like to incoporate is Public Key Cryptography. 
 For an overview of this project as well as getting started instructions, check out the following video:
 
 https://www.loom.com/share/0d3c74890b8e44a5918c4cacb3f646c4
- 
+
 ### Client
 
 The client folder contains a [react app](https://reactjs.org/) using [vite](https://vitejs.dev/). To get started, follow these steps:
 
 1. Open up a terminal in the `/client` folder
 2. Run `npm install` to install all the depedencies
-3. Run `npm run dev` to start the application 
+3. Run `npm run dev` to start the application
 4. Now you should be able to visit the app at http://127.0.0.1:5173/
 
 ### Server
 
 The server folder contains a node.js server using [express](https://expressjs.com/). To run the server, follow these steps:
 
-1. Open a terminal within the `/server` folder 
-2. Run `npm install` to install all the depedencies 
-3. Run `node index` to start the server 
+1. Open a terminal within the `/server` folder
+2. Run `npm install` to install all the depedencies
+3. Run `node index` to start the server
 
-The application should connect to the default server port (3042) automatically! 
+The application should connect to the default server port (3042) automatically!
 
 _Hint_ - Use [nodemon](https://www.npmjs.com/package/nodemon) instead of `node` to automatically restart the server on any changes.
+
+## Usage
+
+Generate 3 private and public key pairs
+```
+node scripts/sign.js
+```
+
+Put the public key to `balances` key in `src/server/index.js` as address
+
+```
+const balances = {
+  "public_key_1": 100,
+  "public_key_2": 50,
+  "public_key_3": 75,
+};
+```
+
+Before sending the amount, put sender's private key and the recipient's address in `src/scripts/sign.js` and generate the signature
+
+```
+node scripts/sign.js
+```
+
+Use the signature when sending the money
