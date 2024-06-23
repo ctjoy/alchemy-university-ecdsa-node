@@ -1,7 +1,7 @@
-import Wallet from "./Wallet";
-import Transfer from "./Transfer";
-import "./App.scss";
 import { useState } from "react";
+import "./App.scss";
+import Transfer from "./Transfer";
+import Wallet from "./Wallet";
 
 function App() {
   const [balance, setBalance] = useState(0);
